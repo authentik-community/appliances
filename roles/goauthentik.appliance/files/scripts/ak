@@ -10,7 +10,7 @@ function prefixwith {
 }
 
 function in_continer() {
-    docker exec -it authentik_server_1 ak $@
+    docker exec -it authentik-server-1 ak $@
 }
 
 function appliance() {
