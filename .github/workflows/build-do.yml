@@ -2,6 +2,9 @@
 name: Build (DigitalOcean)
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -15,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version-file: "pyproject.toml"
       - name: Install ansible
         env:
           DO_API_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
@@ -34,5 +37,5 @@ jobs:
       - run: packer validate -syntax-only .
       - run: packer build -color=false -force .
         env:
-          AUTHENTIK_VERSION: 2022.12.1
+          AUTHENTIK_VERSION: 2025.2.0
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}

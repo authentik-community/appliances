@@ -28,11 +28,11 @@
     content: |
       PG_PASS=foo
 - name: authentik | Compose pre-pull
-  docker_compose:
+  community.docker.docker_compose_v2:
     project_src: /srv/authentik
-    pull: yes
+    pull: always
 - name: authentik | Compose stop
-  docker_compose:
+  community.docker.docker_compose_v2:
     project_src: /srv/authentik
     state: absent
     remove_volumes: yes
