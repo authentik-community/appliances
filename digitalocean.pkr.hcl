@@ -29,7 +29,7 @@ locals {
 
 source "digitalocean" "build_droplet" {
   api_token     = var.do_token
-  image         = "ubuntu-22-04-x64"
+  image         = "ubuntu-24-04-x64"
   region        = "nyc3"
   size          = "s-1vcpu-2gb"
   snapshot_name = local.image_name
