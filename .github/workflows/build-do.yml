@@ -34,5 +34,5 @@ jobs:
       - run: packer validate -syntax-only .
       - run: packer build -color=false -force .
         env:
-          AUTHENTIK_VERSION: 2025.2.0-rc1
+          AUTHENTIK_VERSION: 2025.2.0
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
