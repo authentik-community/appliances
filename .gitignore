@@ -1,3 +1,4 @@
 .env
 roles/**
 !roles/goauthentik**
+.venv
