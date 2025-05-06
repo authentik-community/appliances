@@ -5,7 +5,7 @@ description = ""
 package-mode = false
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 ansible = "^11.2.0"
 
 [tool.poetry.group.dev.dependencies]
