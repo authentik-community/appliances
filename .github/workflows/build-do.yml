@@ -22,7 +22,7 @@ jobs:
       - name: Install uv
         run: curl -Ls https://astral.sh/uv/install.sh | sh
       - name: Install dependencies
-        run: uv pip install
+        run: uv pip install -r pyproject.toml
       - name: Pre-build Ansible wrapper
         run: |
           ./vendor/ansible-wrapper.sh --version
