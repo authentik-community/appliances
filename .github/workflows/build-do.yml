@@ -27,7 +27,6 @@ jobs:
         run: uv pip install -r pyproject.toml
       - name: Pre-build Ansible wrapper
         env:
-          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
           DO_API_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
         run: |
           ./vendor/ansible-wrapper.sh --version
@@ -42,5 +41,5 @@ jobs:
       - run: packer validate -syntax-only .
       - run: packer build -color=false -force .
         env:
-          AUTHENTIK_VERSION: 2025.4.0
+          AUTHENTIK_VERSION: 2025.2.4
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
