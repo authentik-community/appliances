@@ -26,6 +26,8 @@ jobs:
       - name: Install dependencies
         run: uv pip install -r pyproject.toml
       - name: Pre-build Ansible wrapper
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
         run: |
           ./vendor/ansible-wrapper.sh --version
           ./vendor/ansible-wrapper.sh vendor/digitalocean/pre-build.yaml
