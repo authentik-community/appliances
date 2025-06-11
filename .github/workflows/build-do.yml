@@ -29,11 +29,7 @@ jobs:
       - name: Create venv
         run: uv venv
       - name: Install dependencies
-        run: |
-          # Install the package in development mode with uv
-          uv pip install -e .
-          # Install all dependencies
-          uv pip install -r <(uv pip freeze)
+        run: uv sync
       - name: Pre-build Ansible wrapper
         env:
           DO_API_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
