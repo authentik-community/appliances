@@ -9,9 +9,9 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-    "ansible-lint>=25.1.3,<26.0.0"
+    "ansible-lint>=25.1.3"
 ]
 
 [build-system]
-requires = ["uv>=0.1.0"]
-build-backend = "uv.build"
+requires = ["uv_build>=0.7.12,<0.8.0"]
+build-backend = "uv_build"
