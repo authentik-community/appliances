@@ -21,6 +21,8 @@ jobs:
           python-version-file: "pyproject.toml"
       - name: Install uv
         uses: astral-sh/setup-uv@v5
+      - name: Create venv
+        run: uv venv
       - name: Install dependencies
         run: |
           # Install the package in development mode with uv
