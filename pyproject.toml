@@ -13,4 +13,4 @@ dev = [
 
 [build-system]
 requires = ["uv>=0.1.0"]
-build-backend = "uv"
+build-backend = "uv.build"
