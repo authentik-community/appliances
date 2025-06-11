@@ -21,10 +21,12 @@ jobs:
           python-version-file: "pyproject.toml"
       - name: Install uv
         uses: astral-sh/setup-uv@v5
-      - name: Create venv
-        run: uv venv
       - name: Install dependencies
-        run: uv sync
+        run: |
+          # Install the package in development mode with uv
+          uv pip install -e .
+          # Install all dependencies
+          uv pip install -r <(uv pip freeze)
       - name: Pre-build Ansible wrapper
         env:
           DO_API_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
