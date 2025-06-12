@@ -19,17 +19,21 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version-file: "pyproject.toml"
-      - name: Install ansible
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+      - name: Create venv
+        run: uv venv
+      - name: Install dependencies
+        run: uv sync
+      - name: Pre-build Ansible wrapper
         env:
           DO_API_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
         run: |
-          pip install poetry
-          poetry install
           ./vendor/ansible-wrapper.sh --version
           ./vendor/ansible-wrapper.sh vendor/digitalocean/pre-build.yaml
       - name: Install ansible roles
         run: |
-          poetry run ansible-galaxy install -p ./roles -r requirements.yml --verbose
+          uv run ansible-galaxy install -p ./roles -r requirements.yml --verbose
       - uses: hashicorp/setup-packer@main
         with:
           version: "latest"
@@ -37,5 +41,5 @@ jobs:
       - run: packer validate -syntax-only .
       - run: packer build -color=false -force .
         env:
-          AUTHENTIK_VERSION: 2025.2.2
+          AUTHENTIK_VERSION: 2025.6.1
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}

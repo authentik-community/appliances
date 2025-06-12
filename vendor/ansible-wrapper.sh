@@ -1,2 +1,2 @@
 #!/bin/bash -x
-poetry run ansible-playbook "$@"
+uv run ansible-playbook "$@"
