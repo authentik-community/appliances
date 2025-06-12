@@ -44,9 +44,6 @@ build {
   provisioner "shell" {
     inline = ["cloud-init status --wait"]
   }
-  provisioner "shell" {
-    script = "vendor/digitalocean/pre-build-env.sh"
-  }
   provisioner "ansible" {
     playbook_file = "./site.yaml"
     command       = "./vendor/ansible-wrapper.sh"
