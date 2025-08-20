@@ -74,7 +74,7 @@ The following environment variables are used during the build process:
 To build a DigitalOcean image:
 
 ```bash
-packer build -var "authentik_version=2025.6.1" digitalocean.pkr.hcl
+packer build -var "authentik_version=2025.8.0" digitalocean.pkr.hcl
 ```
 
 ## Notes
